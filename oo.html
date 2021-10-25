@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        background-color: cornflowerblue;
+        width: 100%;
+      }
+      .container-info {
+        background-color: cornsilk;
+        width: 90%;
+        height: 600px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+      }
+      .container-left {
+        background-color: cyan;
+        width: 50%;
+      }
+      .left-info {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .container-right {
+        background-color: darkcyan;
+        width: 50%;
+      }
+      h2 {
+        text-align: center;
+        font-size: 2rem;
+      }
+      .entValor {
+        width: 80%;
+        margin: 0 auto;
+      }
+      figure {
+        width: 100%;
+        text-align: center;
+      }
+      figure img {
+        width: 50%;
+      }
+      table {
+        width: 80%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <div class="container-info">
+        <div class="container-left">
+          <div class="left-info">
+            <h2>Sobre o role</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi a
+              voluptatibus doloremque, voluptas, eligendi accusamus recusandae
+              inventore consectetur consequuntur corporis voluptatem maxime
+              explicabo? Necessitatibus placeat quasi dolorum ea ipsa fugit?
+            </p>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius
+              reiciendis officia laudantium error unde quibusdam, tenetur odit
+              iusto repudiandae porro asperiores odio amet quas consequatur
+              voluptate, eos libero sequi et.
+            </p>
+          </div>
+          <div class="entValor">
+            <input placeholder="Nome" />
+            <input placeholder="Nome do Cachorro" />
+            <button>Salvar</button>
+            <button>Cancelar</button>
+          </div>
+          <table border="2">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Nome do cachorro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Fran</td>
+                <td>Belinha</td>
+              </tr>
+            </tbody>
+            <tr>
+              <td>2</td>
+              <td>Raul</td>
+              <td>Pipoca</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Carlos</td>
+              <td>Mel</td>
+            </tr>
+          </table>
+        </div>
+        <div class="container-right">
+          <h2>Calcule seu role</h2>
+          <figure>
+            <img src="img/calc.jpg" alt="" />
+          </figure>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

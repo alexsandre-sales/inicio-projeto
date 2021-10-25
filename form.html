@@ -36,7 +36,12 @@
           name="validaForm"
           action="#"
         >
-          <input id="nome" type="text" placeholder="Nome" />
+          <input
+            id="nome"
+            type="text"
+            onblur="validaCampos()"
+            placeholder="Nome"
+          />
           <input
             id="cpf"
             type="text"
@@ -44,14 +49,19 @@
             onblur="validaCPF()"
             placeholder="CPF"
           />
-          <input type="date" />
+          <input id="data" type="date" onchange="validaIdade(value)" />
           <select>
             <option value="Selecione" disabled selected>Selecione...</option>
             <option value="Masculino">Masculino</option>
             <option value="Feminino">Feminino</option>
           </select>
           <!-- onblur="validaCampos()" -->
-          <input id="email" type="email" placeholder="E-mail" />
+          <input
+            id="email"
+            type="email"
+            onblur="validaCampos()"
+            placeholder="E-mail"
+          />
           <input type="number" placeholder="Telefone" />
           <legend>Endereço</legend>
           <input
@@ -67,7 +77,8 @@
           <input type="text" id="uf" placeholder="UF" />
           <legend>Mande sua mensagem</legend>
           <textarea name="" id="" cols="30" rows="10"></textarea>
-          <button>Enviar</button>
+          <button id="btnEviar">Enviar</button>
+          <p id="respvalor"></p>
         </form>
       </div>
     </section>
@@ -186,19 +197,48 @@
     // validar campos
     let validaCampos = () => {
       if (document.validaForm.nome.value.length < 3) {
-        if ((caixaCampos.style.display = 'block')) {
-        }
-        document.validaForm.nome.focus();
-        // document.validaForm.nome.style.backgroundColor = '#ff9999';
-
+        document.validaForm.nome.style.backgroundColor = '#ff9999';
+        return false;
+      } else if (document.validaForm.email.value.length < 8) {
+        document.validaForm.email.style.backgroundColor = '#ff9999';
         return false;
       }
-      if (document.validaForm.email.value.length < 8) {
-        // caixaCampos.style.display = 'block';
-        // document.validaForm.email.focus();
-        document.validaForm.cpf.style.backgroundColor = '#ff9999';
+    };
+    // let validaCampos = () => {
+    //   if (document.validaForm.nome.value.length < 3) {
+    //     if ((caixaCampos.style.display = 'block')) {
+    //     }
+    //     document.validaForm.nome.focus();
+    //     // document.validaForm.nome.style.backgroundColor = '#ff9999';
 
+    //     return false;
+    //   }
+    //   if (document.validaForm.email.value.length < 8) {
+    //     // caixaCampos.style.display = 'block';
+    //     // document.validaForm.email.focus();
+    //     document.validaForm.cpf.style.backgroundColor = '#ff9999';
+
+    //     return false;
+    //   }
+    // };
+
+    let validaIdade = data => {
+      let dataAtual = new Date();
+      let anoAtual = dataAtual.getUTCFullYear();
+
+      data = new Date(data);
+      let anoEscolhido = data.getUTCFullYear();
+
+      let idade = anoAtual - anoEscolhido;
+
+      if (idade < 18) {
+        console.log('Teste...estou aqui?? menor de 18');
         return false;
+      } else if (idade < 100) {
+        console.log('Teste...estou aqui?? menor de 100');
+        return true;
+      } else {
+        alert('Melhor pedir ajuda');
       }
     };
   </script>
