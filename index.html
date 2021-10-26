@@ -14,6 +14,8 @@
           <li><a href="#">Fundadores</a></li>
           <li><a href="#">Serviço</a></li>
           <li><a href="#">Contato</a></li>
+          <button id="btnAum">A+</button>
+          <button id="btnDim">A-</button>
         </ul>
       </nav>
     </header>
@@ -134,5 +136,23 @@
         <li><a href="#">Facebook</a></li>
       </ul>
     </footer>
+    <script>
+      let aAumentar = document.getElementById('btnAum');
+      let aDiminui = document.getElementById('btnDim');
+      let fontBody = document.querySelector('html');
+      let bodyFont = 16;
+      let fontIncremento = 1;
+
+      aAumentar.addEventListener('click', function (event) {
+        bodyFont = bodyFont + fontIncremento;
+        fontBody.style.fontSize = bodyFont + 'px';
+        console.log(fontBody);
+      });
+      aDiminui.addEventListener('click', function (event) {
+        bodyFont = bodyFont - fontIncremento;
+        fontBody.style.fontSize = bodyFont + 'px';
+        console.log(fontBody);
+      });
+    </script>
   </body>
 </html>
