@@ -17,6 +17,11 @@ ul {
   justify-content: flex-end;
   align-items: center;
   height: 50px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+  background-color: chartreuse;
 }
 li {
   margin-left: 30px;
@@ -36,6 +41,8 @@ li a {
   background-image: url(img/bg-contato-padovani-petshop.jpg);
   background-attachment: fixed;
   position: relative;
+  margin-top: 50px;
+  background-size: 70%;
 }
 .img-txt {
   position: absolute;

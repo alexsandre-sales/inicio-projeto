@@ -102,8 +102,13 @@
         border: 1px solid saddlebrown;
       }
       table th {
-        background-color: seagreen;
+        background-color: #292929;
         text-align: left;
+        color: orange;
+      }
+      table td {
+        background-color: #949494;
+        color: white;
       }
       table td img {
         width: 24px;
@@ -168,11 +173,10 @@
     class Cadastro {
       constructor() {
         this.id = 1;
-        // this.nome = '';
-        // this.dog = 0;
         this.arrayCadastro = [];
         this.testeBtn = 0;
       }
+
       salvar() {
         let servico = this.lerDados();
 
@@ -185,29 +189,21 @@
           this.listaNomes();
           this.cancelar();
         }
-        console.log(this.arrayCadastro);
       }
 
       listaNomes() {
         let tbody = document.getElementById('tBody');
         tbody.innerText = '';
-        // fazer com forEach tbody.forEach()
+
         for (let i = 0; i < this.arrayCadastro.length; i++) {
           let novaLinha = tbody.insertRow();
 
-          console.log(novaLinha);
           let td_nome = novaLinha.insertCell();
           let td_dog = novaLinha.insertCell();
           let td_acoes = novaLinha.insertCell();
-          console.log(td_nome);
 
-          // td_id.innerText = this.arrayCadastro[i].id;
           td_nome.innerText = this.arrayCadastro[i].nome;
           td_dog.innerText = this.arrayCadastro[i].dog;
-          console.log(td_nome);
-
-          // td_id.classList.add('center');
-          // td_acoes.classList.add('center');
 
           let imgEdit = document.createElement('img');
           imgEdit.src = 'img/edit.png';
@@ -219,20 +215,16 @@
           imgDelete.style = 'cursor:pointer';
           td_acoes.appendChild(imgDelete);
 
-          // imgDelete.addEventListener('click', () => {
-          //   servico.deletar(this.arrayCadastro[i].id);
-          // });
-
-          imgDelete.setAttribute(
-            'onclick',
-            'servico.deletar(' + this.arrayCadastro[i].id + ')'
-          );
-
           imgEdit.setAttribute(
             'onclick',
             'servico.mostrarDados(' +
               JSON.stringify(this.arrayCadastro[i]) +
               ')'
+          );
+
+          imgDelete.setAttribute(
+            'onclick',
+            'servico.deletar(' + this.arrayCadastro[i].id + ')'
           );
         }
       }
@@ -241,9 +233,13 @@
         this.arrayCadastro.push(servico);
         this.id++;
       }
+
       cancelar() {
         document.getElementById('nomePessoa').value = '';
         document.getElementById('nomeDog').value = '';
+
+        document.getElementById('btnSalvar').innerText = 'Salvar';
+        this.testeBtn = 0;
       }
 
       lerDados() {
@@ -258,7 +254,6 @@
       validarCampos(servico) {
         let msg = '';
         if (servico.nome == '') {
-          // chamar um modal
           msg += ' - Informe o nome da pessoa \n';
         }
         if (servico.dog == '') {
@@ -273,14 +268,8 @@
 
       deletar(idProcurado) {
         if (confirm('Deseja deletar ? ' + idProcurado)) {
-          // this.servico.splice(idProcurado, 1);
-
           for (let i = 0; i < this.arrayCadastro.length; i++) {
             if (this.arrayCadastro[i].id == idProcurado) {
-              console.log(i);
-              console.log(this.arrayCadastro[i]);
-              console.log(this.arrayCadastro[i].id);
-              console.log(idProcurado);
               this.arrayCadastro.splice(i, 1);
               tBody.deleteRow(i);
             }
@@ -295,6 +284,7 @@
         document.getElementById('btnSalvar').innerHTML = 'Atualizar';
         this.testeBtn = dados.id;
       }
+
       atualizar(id) {
         for (let i = 0; i < this.arrayCadastro.length; i++) {
           if (id == this.arrayCadastro[i].id) {
@@ -304,7 +294,6 @@
               document.getElementById('nomeDog').value;
           }
         }
-        document.getElementById('btnSalvar').innerText = 'Salvar';
         this.testeBtn = 0;
       }
     }
